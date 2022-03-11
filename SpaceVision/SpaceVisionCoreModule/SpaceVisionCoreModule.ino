@@ -40,7 +40,7 @@ void loop() {
   {
       tone(rightBuzzerPin, 100);
   }
-  else if (mpu6050.getAngleY()>30)
+  else if (mpu6050.getAngleX()>30)
   {
       tone(leftBuzzerPin, 100);
   }
