@@ -1,30 +1,32 @@
+#include <HCSR04.h>
+
 int trigPin = 7;
 int echoPin = 9;
-int buzzerPin = 5;
-int frequency;
+int buzzerPin = 6;
 int distance;
-int duration;
-#include <NewPing.h>
-NewPing sonar;
+int frequency;
+int vibrationPin = 2;
+
+HCSR04 ultrasonic(trigPin, echoPin);
+
 void setup() 
 {
-  pinMode(trigPin, OUTPUT); 
-  pinMode(echoPin, INPUT); 
   pinMode(buzzerPin, OUTPUT);
+  pinMode(vibrationPin, OUTPUT);
   Serial.begin(9600); 
 }
 void loop() 
 {
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-  duration = pulseIn(echoPin, HIGH);
-  distance = sonar.ping_cm();
- // frequency = map(2, 140, 0, 5000);
-  //tone(buzzerPin, frequency;
   Serial.print("Distance: ");
-  Serial.println(distance);
-  
+  Serial.println(ultrasonic.dist());
+  if (ultrasonic.dist() < 30)
+  {
+      digitalWrite(vibrationPin, HIGH);
+      delay(60);
+  }
+  else
+  {
+    digitalWrite(vibrationPin, LOW);
+    //delay(60);
+  }
 }
