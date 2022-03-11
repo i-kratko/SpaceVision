@@ -3,21 +3,17 @@
 #include <Wire.h>
 
 MPU6050 mpu6050(Wire);
-<<<<<<< HEAD
 int backBuzzerPin = 9;
-=======
-
-int backBuzzer = 9;
-
-//we work with y and z
-
->>>>>>> ef9b709c5ad80b7888e644e2030bc875811c682f
+int rightBuzzerPin = 6;
+int leftBuzzerPin = 5;
 void setup() {
   Serial.begin(9600);
   Wire.begin();
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
   pinMode(backBuzzerPin, OUTPUT);
+  pinMode(rightBuzzerPin, OUTPUT);
+  pinMode(leftBuzzerPin, OUTPUT); 
 }
 
 void loop() {
@@ -39,5 +35,18 @@ void loop() {
   else 
   {
       noTone(backBuzzerPin);
+  }
+  if (mpu6050.getAngleX()<-30)
+  {
+      tone(rightBuzzerPin, 100);
+  }
+  else if (mpu6050.getAngleY()>30)
+  {
+      tone(leftBuzzerPin, 100);
+  }
+  else 
+  {
+      noTone(rightBuzzerPin);
+      noTone(leftBuzzerPin);
   }
 }
