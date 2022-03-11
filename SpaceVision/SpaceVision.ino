@@ -1,3 +1,4 @@
+
 int trigPin = 7;
 int echoPin = 9;
 int buzzerPin = 5;
@@ -20,6 +21,8 @@ void loop()
   digitalWrite(trigPin, LOW);
   duration = pulseIn(echoPin, HIGH);
   distance = duration * 0.017;
+  frequency = map(2, 140, 0, 5000);
+  tone(buzzerPin, frequency;
   Serial.print("Distance: ");
   Serial.println(distance);
   
