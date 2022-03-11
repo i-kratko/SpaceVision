@@ -1,10 +1,11 @@
-
 int trigPin = 7;
 int echoPin = 9;
 int buzzerPin = 5;
 int frequency;
 int distance;
 int duration;
+#include <NewPing.h>
+NewPing sonar;
 void setup() 
 {
   pinMode(trigPin, OUTPUT); 
@@ -20,9 +21,9 @@ void loop()
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
   duration = pulseIn(echoPin, HIGH);
-  distance = duration * 0.017;
-  frequency = map(2, 140, 0, 5000);
-  tone(buzzerPin, frequency;
+  distance = sonar.ping_cm();
+ // frequency = map(2, 140, 0, 5000);
+  //tone(buzzerPin, frequency;
   Serial.print("Distance: ");
   Serial.println(distance);
   
