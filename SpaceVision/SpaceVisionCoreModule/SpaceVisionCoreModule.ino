@@ -12,7 +12,7 @@ void setup() {
   Serial.begin(9600);
   //Wire.begin();
   //mpu6050.begin();
-  mpu6050.calcGyroOffsets(true);
+  //mpu6050.calcGyroOffsets(true);
   pinMode(backBuzzerPin, OUTPUT);
   pinMode(rightBuzzerPin, OUTPUT);
   pinMode(leftBuzzerPin, OUTPUT); 
@@ -28,6 +28,7 @@ void loop() {
   {
     Wire.begin();
     mpu6050.begin();
+    mpu6050.calcGyroOffsets(true);
   }
   
   Serial.print("angleX : ");
