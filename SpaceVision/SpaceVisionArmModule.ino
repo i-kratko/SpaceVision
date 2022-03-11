@@ -19,7 +19,7 @@ void loop()
 {
   Serial.print("Distance: ");
   Serial.println(ultrasonic.dist());
-  if (ultrasonic.dist() < 30)
+  if (ultrasonic.dist() < 40)
   {
       digitalWrite(vibrationPin, HIGH);
       delay(60);
