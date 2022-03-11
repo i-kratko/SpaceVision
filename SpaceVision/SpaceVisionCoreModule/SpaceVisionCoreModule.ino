@@ -2,6 +2,8 @@
 #include <MPU6050_tockn.h>
 #include <Wire.h>
 
+//da se prepravi
+
 MPU6050 mpu6050(Wire);
 int backBuzzerPin = 9;
 int rightBuzzerPin = 6;
