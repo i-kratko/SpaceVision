@@ -6,31 +6,20 @@ MPU6050 mpu6050(Wire);
 int backBuzzerPin = 9;
 int rightBuzzerPin = 6;
 int leftBuzzerPin = 5;
-int buttonPin = 1;
-int buttonState = 0;
+int frontBuzzerPin = 10;
 void setup() {
   Serial.begin(9600);
-  //Wire.begin();
-  //mpu6050.begin();
-  //mpu6050.calcGyroOffsets(true);
+  Wire.begin();
+  mpu6050.begin();
+  mpu6050.calcGyroOffsets(true);
   pinMode(backBuzzerPin, OUTPUT);
   pinMode(rightBuzzerPin, OUTPUT);
   pinMode(leftBuzzerPin, OUTPUT); 
-  pinMode(buttonPin, INPUT);
+  pinMode(frontBuzzerPin, OUTPUT); 
 }
 
 void loop() {
   mpu6050.update();
-
-  //button code
-  buttonState = digitalRead(buttonPin);
-  if (buttonState == HIGH)
-  {
-    Wire.begin();
-    mpu6050.begin();
-    mpu6050.calcGyroOffsets(true);
-  }
-  
   Serial.print("angleX : ");
   Serial.print(mpu6050.getAngleX());
   Serial.print("\tangleY : ");
@@ -39,7 +28,7 @@ void loop() {
   Serial.println(mpu6050.getAngleZ());
   if (mpu6050.getAngleY()<-40)
   {
-      tone(backBuzzerPin, 100);
+      tone(frontBuzzerPin, 100);
   }
   else if (mpu6050.getAngleY()>20)
   {
@@ -48,6 +37,7 @@ void loop() {
   else 
   {
       noTone(backBuzzerPin);
+      noTone(frontBuzzerPin);
   }
   if (mpu6050.getAngleX()<-30)
   {
