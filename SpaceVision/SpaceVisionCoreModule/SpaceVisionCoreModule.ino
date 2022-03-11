@@ -4,6 +4,10 @@
 
 MPU6050 mpu6050(Wire);
 
+int backBuzzer = 9;
+
+//we work with y and z
+
 void setup() {
   Serial.begin(9600);
   Wire.begin();
