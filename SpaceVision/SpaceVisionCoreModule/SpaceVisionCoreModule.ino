@@ -3,7 +3,15 @@
 #include <Wire.h>
 
 MPU6050 mpu6050(Wire);
+<<<<<<< HEAD
 int backBuzzerPin = 9;
+=======
+
+int backBuzzer = 9;
+
+//we work with y and z
+
+>>>>>>> ef9b709c5ad80b7888e644e2030bc875811c682f
 void setup() {
   Serial.begin(9600);
   Wire.begin();
