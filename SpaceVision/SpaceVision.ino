@@ -1,9 +1,14 @@
-int trigPin = 9;
-int echoPin = 10;
+int trigPin = 7;
+int echoPin = 9;
+int buzzerPin = 5;
+int frequency;
 int distance;
-void setup() {
+int duration;
+void setup() 
+{
   pinMode(trigPin, OUTPUT); 
   pinMode(echoPin, INPUT); 
+  pinMode(buzzerPin, OUTPUT);
   Serial.begin(9600); 
 }
 void loop() 
@@ -17,4 +22,5 @@ void loop()
   distance = duration * 0.017;
   Serial.print("Distance: ");
   Serial.println(distance);
+  
 }
