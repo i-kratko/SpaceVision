@@ -26,12 +26,11 @@ void loop()
   printAngles(); 
   checkYAngle();
   checkXAngle();
-  Serial.println(myDFPlayer.readState()); //read mp3 state
-  Serial.println(myDFPlayer.readVolume()); //read current volume
-  Serial.println(myDFPlayer.readEQ()); //read EQ setting
-  Serial.println(myDFPlayer.readFileCounts()); //read all file counts in SD card
-  Serial.println(myDFPlayer.readCurrentFileNumber()); //read current play file number
-  Serial.println(myDFPlayer.readFileCountsInFolder(3)); //read file counts in folder SD:/03
+  //Serial.println(mp3Player.readState()); //read mp3 state
+  //Serial.println(mp3Player.readVolume()); //read current volume
+  //Serial.println(mp3Player.readFileCounts()); //read all file counts in SD card
+  //Serial.println(mp3Player.readCurrentFileNumber()); //read current play file number
+  //Serial.println(mp3Player.readFileCountsInFolder(3)); //read file counts in folder SD:/03
 }
 
 void printAngles() //demonstration/debugging purposes
