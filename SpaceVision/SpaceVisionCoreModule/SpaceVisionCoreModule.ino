@@ -12,14 +12,13 @@ int buzzerPin = 9;
 void setup() 
 {
   softwareSerial.begin(9600);
-  mp3Player.begin(softwareSerial);
   Serial.begin(115200);
   Wire.begin();
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);  //calculation of gyro sensor offsets
   pinMode(buzzerPin, OUTPUT);
   
-  if (!myDFPlayer.begin(mySoftwareSerial)) 
+  if (!mp3Player.begin(softwareSerial)) 
   { 
     //Use softwareSerial to communicate with mp3.
     Serial.println(F("Unable to begin:"));
