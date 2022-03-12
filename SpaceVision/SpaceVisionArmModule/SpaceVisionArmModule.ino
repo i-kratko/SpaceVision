@@ -15,18 +15,31 @@ void setup()
   pinMode(vibrationPin, OUTPUT);
   Serial.begin(9600); 
 }
+
 void loop() 
 {
-  Serial.print("Distance: ");
-  Serial.println(ultrasonic.dist());
+  //Serial.print("Distance: ");
+  //Serial.println(ultrasonic.dist());
+  //the same thing -> printOutDistance()
+
+  printOutDistance();
+  
   if (ultrasonic.dist() < 40)
   {
+      //turns on the vibration module
       digitalWrite(vibrationPin, HIGH);
       delay(60);
   }
   else
   {
+    //turns off the vibration module
     digitalWrite(vibrationPin, LOW);
-    //delay(60);
+    delay(60);
   }
+}
+
+void printOutDistance()
+{
+  Serial.print("Distance: ");
+  Serial.println(ultrasonic.dist());
 }
