@@ -33,7 +33,7 @@ void loop()
 
 /*this is the function that prints out the distance
 mesured by the ultrasonic sensor to the 
-serial monitor, for debugging*/
+serial monitor, for debugging */
 void printOutDistance()
 {
   Serial.print("Distance: ");
