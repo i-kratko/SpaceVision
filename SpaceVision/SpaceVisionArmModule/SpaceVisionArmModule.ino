@@ -18,6 +18,7 @@ void setup()
   Serial.begin(9600); 
 }
 
+//this is the function in which the loop takes place
 void loop() 
 {
   //Serial.print("Distance: ");
