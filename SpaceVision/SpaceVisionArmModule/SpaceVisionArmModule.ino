@@ -10,7 +10,6 @@ int vibrationPin = 2;
 //initializing the ultra sonic sensor
 HCSR04 ultrasonic(trigPin, echoPin);
 
-//this function is the setup
 void setup() 
 {
   pinMode(buzzerPin, OUTPUT);
