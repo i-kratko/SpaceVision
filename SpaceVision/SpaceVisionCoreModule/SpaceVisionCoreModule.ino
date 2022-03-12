@@ -7,7 +7,7 @@ int buzzerPin = 9;
 #include "SoftwareSerial.h"
 #include "DFRobotDFPlayerMini.h"
 
-// Use pins 2 and 3 to communicate with DFPlayer Mini
+// Use pins 10 and 11 to communicate with DFPlayer Mini
 static const uint8_t PIN_MP3_TX = 11; // Connects to module's RX 
 static const uint8_t PIN_MP3_RX = 10; // Connects to module's TX 
 SoftwareSerial softwareSerial(PIN_MP3_RX, PIN_MP3_TX);
@@ -41,7 +41,7 @@ void loop()
   mpu6050.update(); //updating the gyro coordinates constantly
   printAngles(); 
   checkYAngle();
-  //checkXAngle();
+  checkXAngle();
 }
 
 void printAngles() //demonstration/debugging purposes
@@ -56,35 +56,28 @@ void printAngles() //demonstration/debugging purposes
 
 void checkYAngle() //forwards and backwards
 {
-  if (mpu6050.getAngleY()<-40)
+  if (mpu6050.getAngleY()<-20)
   {
       player.volume(30);
       player.play(5);
   }
- /* else if (mpu6050.getAngleY()>20)
+  else if (mpu6050.getAngleY()>20)
   {
-      tone(frontBuzzerPin, 100);
+      player.volume(30);
+      player.play(1);
   }
-  else 
-  {
-      noTone(backBuzzerPin);
-      noTone(frontBuzzerPin);
-  }*/
 }
 
-/*void checkXAngle() //right and left
+void checkXAngle() //right and left
 {
   if (mpu6050.getAngleX()<-30)
   {
-      tone(rightBuzzerPin, 100);
+      player.volume(30);
+      player.play(4);
   }
   else if (mpu6050.getAngleX()>30)
   {
-      tone(leftBuzzerPin, 100);
+      player.volume(30);
+      player.play(3);
   }
-  else 
-  {
-      noTone(rightBuzzerPin);
-      noTone(leftBuzzerPin);
-  }
-}*/
+}

@@ -23,7 +23,7 @@ void setup() {
     // Set volume to maximum (0 to 30).
     player.volume(30);
     // Play the first MP3 file on the SD card
-    player.play(5);
+    player.play(1);
   } else {
     Serial.println("Connecting to DFPlayer Mini failed! Spinkame.");
   }
