@@ -1,20 +1,19 @@
 
-#include <MPU6050_tockn.h>
+#include <MPU6050_tockn.h> //gyro sensor library
 #include <Wire.h>
-
-//da se prepravi
 
 MPU6050 mpu6050(Wire);
 int backBuzzerPin = 9;
 int rightBuzzerPin = 6;
 int leftBuzzerPin = 5;
 int frontBuzzerPin = 10;
+
 void setup() 
 {
   Serial.begin(9600);
   Wire.begin();
   mpu6050.begin();
-  mpu6050.calcGyroOffsets(true);
+  mpu6050.calcGyroOffsets(true); //calculation of gyro sensor offsets
   pinMode(backBuzzerPin, OUTPUT);
   pinMode(rightBuzzerPin, OUTPUT);
   pinMode(leftBuzzerPin, OUTPUT); 
@@ -23,12 +22,13 @@ void setup()
 
 void loop() 
 {
-  mpu6050.update();
-  printAngles();
+  mpu6050.update(); //updating the gyro coordinates constantly
+  printAngles(); 
   checkYAngle();
   checkXAngle();
 }
-void printAngles()
+
+void printAngles() //demonstration/debugging purposes
 {
   Serial.print("angleX : ");
   Serial.print(mpu6050.getAngleX());
@@ -37,6 +37,7 @@ void printAngles()
   Serial.print("\tangleZ : ");
   Serial.println(mpu6050.getAngleZ());
 }
+
 void checkYAngle() //forwards and backwards
 {
   if (mpu6050.getAngleY()<-40)
@@ -53,6 +54,7 @@ void checkYAngle() //forwards and backwards
       noTone(frontBuzzerPin);
   }
 }
+
 void checkXAngle() //right and left
 {
   if (mpu6050.getAngleX()<-30)
