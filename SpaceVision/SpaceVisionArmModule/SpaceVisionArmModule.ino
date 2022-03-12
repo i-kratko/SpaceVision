@@ -16,7 +16,9 @@ void setup()
 
 void loop() 
 {
-  printOutDistance(); 
+  Serial.print("Distance: ");
+  Serial.println(ultrasonic.dist());
+  //printOutDistance(); 
   if (ultrasonic.dist() < 40)
   {
       //powers on the vibration module
@@ -27,7 +29,7 @@ void loop()
   {
       //powers off the vibration module
       digitalWrite(vibrationPin, LOW);
-      delay(60);
+      //delay(60);
   }
 }
 
