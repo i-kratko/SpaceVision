@@ -19,15 +19,15 @@ void loop()
   printOutDistance(); 
   if (ultrasonic.dist() < 40)
   {
-      //turns on the vibration module
+      //powers on the vibration module
       digitalWrite(vibrationPin, HIGH);
       delay(60);
   }
   else
   {
-    //turns off the vibration module
-    digitalWrite(vibrationPin, LOW);
-    delay(60);
+      //powers off the vibration module
+      digitalWrite(vibrationPin, LOW);
+      delay(60);
   }
 }
 
