@@ -17,13 +17,13 @@ void setup()
   Serial.begin(9600); 
 }
 
-//this is the function in which the loop takes place
 void loop() 
 {
   //Serial.print("Distance: ");
   //Serial.println(ultrasonic.dist());
   //the same thing -> printOutDistance()
 
+  //calling the function
   printOutDistance();
   
   if (ultrasonic.dist() < 40)
@@ -40,6 +40,9 @@ void loop()
   }
 }
 
+//this is the function that prints out the distance
+//mesured by the ultrasonic sensor to the 
+//serial monitor
 void printOutDistance()
 {
   Serial.print("Distance: ");
