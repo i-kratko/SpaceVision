@@ -18,6 +18,15 @@ void setup()
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);  //calculation of gyro sensor offsets
   pinMode(buzzerPin, OUTPUT);
+  
+  if (!myDFPlayer.begin(mySoftwareSerial)) 
+  { 
+    //Use softwareSerial to communicate with mp3.
+    Serial.println(F("Unable to begin:"));
+    Serial.println(F("1.Please recheck the connection!"));
+    Serial.println(F("2.Please insert the SD card!"));
+    while(true);
+  }
 
   mp3Player.volume(15);
   mp3Player.outputDevice(DFPLAYER_DEVICE_SD);
