@@ -25,9 +25,10 @@ void setup() {
     // Play the first MP3 file on the SD card
     player.play(1);
   } else {
-    Serial.println("Connecting to DFPlayer Mini failed!");
+    Serial.println("Connecting to DFPlayer Mini failed! Spinkame.");
   }
 }
 
-void loop() {
+void loop() 
+{
 }
