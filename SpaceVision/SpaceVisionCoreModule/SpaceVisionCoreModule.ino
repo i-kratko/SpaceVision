@@ -13,11 +13,21 @@ void setup()
 {
   softwareSerial.begin(9600);
   mp3Player.begin(softwareSerial);
-  Serial.begin(9600);
+  Serial.begin(115200);
   Wire.begin();
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);  //calculation of gyro sensor offsets
   pinMode(buzzerPin, OUTPUT);
+
+  mp3Player.volume(15);
+  mp3Player.outputDevice(DFPLAYER_DEVICE_SD);
+  mp3Player.play(1);
+
+  Serial.println(mp3Player.readState()); //read mp3 state
+  Serial.println(mp3Player.readVolume()); //read current volume
+  Serial.println(mp3Player.readFileCounts()); //read all file counts in SD card
+  Serial.println(mp3Player.readCurrentFileNumber()); //read current play file number
+  Serial.println(mp3Player.readFileCountsInFolder(3)); //read file counts in folder SD:/03
 }
 
 void loop() 
@@ -26,11 +36,7 @@ void loop()
   printAngles(); 
   checkYAngle();
   checkXAngle();
-  Serial.println(mp3Player.readState()); //read mp3 state
-  Serial.println(mp3Player.readVolume()); //read current volume
-  Serial.println(mp3Player.readFileCounts()); //read all file counts in SD card
-  Serial.println(mp3Player.readCurrentFileNumber()); //read current play file number
-  //Serial.println(mp3Player.readFileCountsInFolder(3)); //read file counts in folder SD:/03
+  
 }
 
 void printAngles() //demonstration/debugging purposes
