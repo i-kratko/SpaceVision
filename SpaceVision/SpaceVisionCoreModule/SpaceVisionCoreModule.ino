@@ -13,7 +13,7 @@ void setup()
   Serial.begin(9600);
   Wire.begin();
   mpu6050.begin();
-  mpu6050.calcGyroOffsets(true); //calculation of gyro sensor offsets
+  mpu6050.calcGyroOffsets(true);  //calculation of gyro sensor offsets
   pinMode(backBuzzerPin, OUTPUT);
   pinMode(rightBuzzerPin, OUTPUT);
   pinMode(leftBuzzerPin, OUTPUT); 
