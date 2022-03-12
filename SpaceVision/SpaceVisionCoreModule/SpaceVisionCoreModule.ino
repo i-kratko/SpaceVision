@@ -9,7 +9,8 @@ int backBuzzerPin = 9;
 int rightBuzzerPin = 6;
 int leftBuzzerPin = 5;
 int frontBuzzerPin = 10;
-void setup() {
+void setup() 
+{
   Serial.begin(9600);
   Wire.begin();
   mpu6050.begin();
@@ -22,12 +23,7 @@ void setup() {
 
 void loop() {
   mpu6050.update();
-  Serial.print("angleX : ");
-  Serial.print(mpu6050.getAngleX());
-  Serial.print("\tangleY : ");
-  Serial.print(mpu6050.getAngleY());
-  Serial.print("\tangleZ : ");
-  Serial.println(mpu6050.getAngleZ());
+  printAngles();
   if (mpu6050.getAngleY()<-40)
   {
       tone(frontBuzzerPin, 100);
@@ -54,4 +50,13 @@ void loop() {
       noTone(rightBuzzerPin);
       noTone(leftBuzzerPin);
   }
+}
+void printAngles()
+{
+  Serial.print("angleX : ");
+  Serial.print(mpu6050.getAngleX());
+  Serial.print("\tangleY : ");
+  Serial.print(mpu6050.getAngleY());
+  Serial.print("\tangleZ : ");
+  Serial.println(mpu6050.getAngleZ());
 }
