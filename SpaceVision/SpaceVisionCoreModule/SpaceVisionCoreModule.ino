@@ -56,15 +56,21 @@ void printAngles() //demonstration/debugging purposes
 
 void checkYAngle() //forwards and backwards
 {
-  if (mpu6050.getAngleY()<-20)
+  if (mpu6050.getAngleY()<-30)
   {
       player.volume(30);
       player.play(2);
+      tone(buzzerPin, 1000);
   }
-  else if (mpu6050.getAngleY()>20)
+  else if (mpu6050.getAngleY()>-10)
   {
       player.volume(30);
       player.play(2);
+      tone(buzzerPin, 1000);
+  }
+  else
+  {
+      noTone(buzzerPin);
   }
 }
 
@@ -74,10 +80,16 @@ void checkXAngle() //right and left
   {
       player.volume(30);
       player.play(2);
+      tone(buzzerPin, 1000);
   }
   else if (mpu6050.getAngleX()>20)
   {
       player.volume(30);
       player.play(2);
+      tone(buzzerPin, 1000);
+  }
+  else
+  {
+      noTone(buzzerPin);
   }
 }
