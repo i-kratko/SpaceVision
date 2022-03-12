@@ -21,9 +21,24 @@ void setup()
   pinMode(frontBuzzerPin, OUTPUT); 
 }
 
-void loop() {
+void loop() 
+{
   mpu6050.update();
   printAngles();
+  checkYAngle();
+  checkXAngle();
+}
+void printAngles()
+{
+  Serial.print("angleX : ");
+  Serial.print(mpu6050.getAngleX());
+  Serial.print("\tangleY : ");
+  Serial.print(mpu6050.getAngleY());
+  Serial.print("\tangleZ : ");
+  Serial.println(mpu6050.getAngleZ());
+}
+void checkYAngle() //forwards and backwards
+{
   if (mpu6050.getAngleY()<-40)
   {
       tone(frontBuzzerPin, 100);
@@ -37,6 +52,9 @@ void loop() {
       noTone(backBuzzerPin);
       noTone(frontBuzzerPin);
   }
+}
+void checkXAngle() //right and left
+{
   if (mpu6050.getAngleX()<-30)
   {
       tone(rightBuzzerPin, 100);
@@ -50,13 +68,4 @@ void loop() {
       noTone(rightBuzzerPin);
       noTone(leftBuzzerPin);
   }
-}
-void printAngles()
-{
-  Serial.print("angleX : ");
-  Serial.print(mpu6050.getAngleX());
-  Serial.print("\tangleY : ");
-  Serial.print(mpu6050.getAngleY());
-  Serial.print("\tangleZ : ");
-  Serial.println(mpu6050.getAngleZ());
 }
