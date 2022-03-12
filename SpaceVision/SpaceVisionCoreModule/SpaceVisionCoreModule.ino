@@ -26,10 +26,10 @@ void loop()
   printAngles(); 
   checkYAngle();
   checkXAngle();
-  //Serial.println(mp3Player.readState()); //read mp3 state
-  //Serial.println(mp3Player.readVolume()); //read current volume
-  //Serial.println(mp3Player.readFileCounts()); //read all file counts in SD card
-  //Serial.println(mp3Player.readCurrentFileNumber()); //read current play file number
+  Serial.println(mp3Player.readState()); //read mp3 state
+  Serial.println(mp3Player.readVolume()); //read current volume
+  Serial.println(mp3Player.readFileCounts()); //read all file counts in SD card
+  Serial.println(mp3Player.readCurrentFileNumber()); //read current play file number
   //Serial.println(mp3Player.readFileCountsInFolder(3)); //read file counts in folder SD:/03
 }
 
@@ -47,11 +47,11 @@ void checkYAngle() //forwards and backwards
 {
   if (mpu6050.getAngleY()<-40)
   {
-      mp3Player.playMp3Folder(1);
+      mp3Player.playFolder(1,1);
   }
   else if (mpu6050.getAngleY()>20)
   {
-      mp3Player.playMp3Folder(2);
+      mp3Player.playFolder(2,1);
   }
 }
 
@@ -59,10 +59,10 @@ void checkXAngle() //right and left
 {
   if (mpu6050.getAngleX()<-30)
   {
-      mp3Player.playMp3Folder(4);
+      mp3Player.playFolder(4,1);
   }
   else if (mpu6050.getAngleX()>30)
   {
-      mp3Player.playMp3Folder(3);
+      mp3Player.playFolder(3,1);
   }
 }
