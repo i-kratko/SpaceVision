@@ -1,23 +1,23 @@
 
 #include <MPU6050_tockn.h> //gyro sensor library
+#include <SoftwareSerial.h>
+#include <DFRobotDFPlayerMini.h>
 #include <Wire.h>
 
+SoftwareSerial softwareSerial(10, 11);
+DFRobotDFPlayerMini mp3Player;
 MPU6050 mpu6050(Wire);
-int backBuzzerPin = 9;
-int rightBuzzerPin = 6;
-int leftBuzzerPin = 5;
-int frontBuzzerPin = 10;
+int buzzerPin = 9;
 
 void setup() 
 {
+  softwareSerial.begin(9600);
+  mp3Player.begin(softwareSerial);
   Serial.begin(9600);
   Wire.begin();
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);  //calculation of gyro sensor offsets
-  pinMode(backBuzzerPin, OUTPUT);
-  pinMode(rightBuzzerPin, OUTPUT);
-  pinMode(leftBuzzerPin, OUTPUT); 
-  pinMode(frontBuzzerPin, OUTPUT); 
+  pinMode(buzzerPin, OUTPUT);
 }
 
 void loop() 
@@ -42,16 +42,11 @@ void checkYAngle() //forwards and backwards
 {
   if (mpu6050.getAngleY()<-40)
   {
-      tone(frontBuzzerPin, 100);
+      mp3Player.playMp3Folder(1);
   }
   else if (mpu6050.getAngleY()>20)
   {
-      tone(backBuzzerPin, 100);
-  }
-  else 
-  {
-      noTone(backBuzzerPin);
-      noTone(frontBuzzerPin);
+      mp3Player.playMp3Folder(2);
   }
 }
 
@@ -59,15 +54,10 @@ void checkXAngle() //right and left
 {
   if (mpu6050.getAngleX()<-30)
   {
-      tone(rightBuzzerPin, 100);
+      mp3Player.playMp3Folder(4);
   }
   else if (mpu6050.getAngleX()>30)
   {
-      tone(leftBuzzerPin, 100);
-  }
-  else 
-  {
-      noTone(rightBuzzerPin);
-      noTone(leftBuzzerPin);
+      mp3Player.playMp3Folder(3);
   }
 }
