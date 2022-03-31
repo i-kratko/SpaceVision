@@ -7,6 +7,7 @@ SpaceVision е embedded решение за приобщаване на незр
 # Електрическа схема на проекта
 
 Главен модул
+
 ![image](https://user-images.githubusercontent.com/80511192/161133523-578182ef-5cf8-4953-abd7-a6f90b1cda4c.png)
 
 Второстепенен модул
